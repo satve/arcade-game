@@ -6,6 +6,10 @@ const babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
+gulp.task('default', ['css', 'images', 'js', 'watch'], () => {
+
+});
+
 gulp.task('css', () => {
     gulp.src('./src/css/**/*.css')
         .pipe(autoprefixer({
