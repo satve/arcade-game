@@ -7,11 +7,13 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('css', () => {
-	gulp.src('./src/css/**/*.css')
+    gulp.src('./src/css/**/*.css')
         .pipe(autoprefixer({
             browsers: ['last 4 versions'],
         }))
-        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(cleanCSS({
+            compatibility: 'ie8'
+        }))
         .pipe(gulp.dest('./dist/css/'))
 });
 
@@ -22,11 +24,11 @@ gulp.task('images', () => {
 });
 
 gulp.task('js', () => {
-    gulp.src(['./src/app.js', './src/engine.js', './src/resources.js']) 
-  .pipe(babel({
-        presets: ['env']
-      }))
-      .pipe(concat('main.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest('./dist/js/'))
-    });
+    gulp.src(['./src/js/app.js', './src/js/engine.js', './src/js/resources.js'])
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/js/'))
+});
